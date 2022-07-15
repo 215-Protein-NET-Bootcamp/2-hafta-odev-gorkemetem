@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProteinApi.Service", "Prote
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProteinApi.Base", "ProteinApi.Base\ProteinApi.Base.csproj", "{0AC75417-5B1A-4360-B133-169B72CC27C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProteinApi.Dto", "ProteinApi.Dto\ProteinApi.Dto.csproj", "{4AB3D44B-3818-4E0B-8497-635A148431F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0AC75417-5B1A-4360-B133-169B72CC27C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AC75417-5B1A-4360-B133-169B72CC27C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AC75417-5B1A-4360-B133-169B72CC27C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AB3D44B-3818-4E0B-8497-635A148431F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AB3D44B-3818-4E0B-8497-635A148431F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AB3D44B-3818-4E0B-8497-635A148431F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AB3D44B-3818-4E0B-8497-635A148431F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

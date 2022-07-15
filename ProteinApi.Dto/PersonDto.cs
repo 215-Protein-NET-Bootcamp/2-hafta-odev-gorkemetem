@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProteinApi.Base.Attribute;
+using ProteinApi.Base.BaseModel;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
-namespace ProteinApi.Base.Dto
+namespace ProteinApi.Dto
 {
-    public class PersonDto : BaseDto
+    public class PersonDto :BaseDto
     {
 
         [Required]
@@ -41,7 +42,6 @@ namespace ProteinApi.Base.Dto
         [JsonConverter(typeof(DateTimeConverter))]
         [Display(Name = "DateOfBirth")]
         public DateTime DateOfBirth { get; set; }
-
 
         public string FullName
         {
