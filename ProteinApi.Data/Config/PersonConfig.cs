@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProteinApi.Data.Config
+namespace ProteinApi.Data
 {
     public class PersonConfig : IEntityTypeConfiguration<Person>
     {

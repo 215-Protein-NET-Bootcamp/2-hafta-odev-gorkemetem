@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProteinApi.Base.BaseModel
+namespace ProteinApi.Base
 {
     public abstract class BaseDto
     {

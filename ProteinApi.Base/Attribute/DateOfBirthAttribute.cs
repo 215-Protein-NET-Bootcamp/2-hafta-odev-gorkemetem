@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProteinApi.Base.Attribute
+namespace ProteinApi.Base
 {
     public class DateOfBirthAttribute : ValidationAttribute
     {

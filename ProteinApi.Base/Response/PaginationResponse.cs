@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProteinApi.Base.Response
+namespace ProteinApi.Base
 {
-    internal class PaginationResponse
+    public class PaginationResponse
     {
     }
 }
