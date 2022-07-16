@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ProteinApi.Base\ProteinApi.Base.csproj" />
     <ProjectReference Include="..\ProteinApi.Dto\ProteinApi.Dto.csproj" />
   </ItemGroup>
