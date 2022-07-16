@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using N11CityServiceReference;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProteinApi.Controllers
 {

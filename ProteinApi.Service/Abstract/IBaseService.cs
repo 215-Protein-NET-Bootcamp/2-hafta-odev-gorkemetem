@@ -1,6 +1,6 @@
-﻿using ProteinApi.Base;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ProteinApi.Base;
 
 namespace ProteinApi.Service
 {

@@ -4,4 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProteinApi.Data\ProteinApi.Data.csproj" />
+  </ItemGroup>
+
 </Project>
