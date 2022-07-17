@@ -1,7 +1,13 @@
 using NUnit.Framework;
+using System;
 
 namespace ProteinApi.Test
 {
+    [Obsolete("use student insted of Student.cs ")]
+    public class DemoStudent
+    {
+
+    }
     public class Tests
     {
         [SetUp]
@@ -12,7 +18,8 @@ namespace ProteinApi.Test
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+            DemoStudent obj = new DemoStudent();
+            Assert.Equals(true,true);
         }
     }
 }
