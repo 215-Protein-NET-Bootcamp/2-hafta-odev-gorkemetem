@@ -6,27 +6,27 @@ using ProteinApi.Service;
 using Serilog;
 using System.Threading.Tasks;
 
-namespace ProteinApi
+namespace ProteinApi.Controllers
 {
     [Route("api/v1/tech/[controller]")]
     [ApiController]
-    public class AuthorController : BaseController<AuthorDto, Author>
+    public class EmployeeController : BaseController<EmployeeDto, Employee>
     {
-        private readonly IAuthorService AuthorService;
+        private readonly IEmployeeService _employeeService;
 
-        public AuthorController(IAuthorService AuthorService, IMapper mapper) : base(AuthorService, mapper)
+        public EmployeeController(IEmployeeService EmployeeService, IMapper mapper) : base(EmployeeService, mapper)
         {
-            this.AuthorService = AuthorService;
+            _employeeService = EmployeeService;
         }
-        
-        
+
+
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            Log.Information($"{User.Identity?.Name}: get Author.");           
+            Log.Information($"{User.Identity?.Name}: get Country.");
 
-            var result = await AuthorService.GetAllAsync();
+            var result = await _employeeService.GetAllAsync();
 
             if (!result.Success)
                 return BadRequest(result);
@@ -38,22 +38,22 @@ namespace ProteinApi
         }
 
 
-        [HttpGet("{id:int}")]      
+        [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: get a Author with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: get a Employee with Id is {id}.");
 
             return await base.GetByIdAsync(id);
         }
 
-        [HttpPost]       
-        public new async Task<IActionResult> CreateAsync([FromBody] AuthorDto resource)
+        [HttpPost]
+        public new async Task<IActionResult> CreateAsync([FromBody] EmployeeDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: create a Author.");
+            Log.Information($"{User.Identity?.Name}: create a Employee.");
 
             resource.CreatedBy = User.Identity?.Name;
 
-            var insertResult = await AuthorService.InsertAsync(resource);
+            var insertResult = await _employeeService.InsertAsync(resource);
 
             if (!insertResult.Success)
                 return BadRequest(insertResult);
@@ -62,18 +62,18 @@ namespace ProteinApi
         }
 
         [HttpPut("{id:int}")]
-        public new async Task<IActionResult> UpdateAsync(int id, [FromBody] AuthorDto resource)
+        public new async Task<IActionResult> UpdateAsync(int id, [FromBody] EmployeeDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: update a Author with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: update a Department with Id is {id}.");
 
             return await base.UpdateAsync(id, resource);
         }
 
-    
+
         [HttpDelete("{id:int}")]
         public new async Task<IActionResult> DeleteAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: delete a Author with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: delete a Department with Id is {id}.");
 
             return await base.DeleteAsync(id);
         }

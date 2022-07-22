@@ -8,8 +8,10 @@ namespace ProteinApi.Service.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Person, PersonDto>().ReverseMap();
-            CreateMap<Author, AuthorDto>().ReverseMap();
+            CreateMap<Country, CountryDto>().ReverseMap();
+            CreateMap<Department, DepartmentDto>().ReverseMap();
+            CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Folder, FolderDto>().ReverseMap();
         }
 
     }
