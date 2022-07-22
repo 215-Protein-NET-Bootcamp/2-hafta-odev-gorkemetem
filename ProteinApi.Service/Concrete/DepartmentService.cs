@@ -12,19 +12,19 @@ namespace ProteinApi.Service
 {
     public class DepartmentService : BaseService<DepartmentDto, Department>, IDepartmentService
     {
-        public DepartmentService(IDepartmentRepository departmentRepository, IMapper mapper, IUnitOfWork unitOfWork) : base(baseRepository, mapper, unitOfWork)
+        public DepartmentService(IDepartmentRepository departmentRepository, IMapper mapper, IUnitOfWork unitOfWork) : base(departmentRepository, mapper, unitOfWork)
         {
             _departmentRepository = departmentRepository;
         }
 
         private readonly IDepartmentRepository _departmentRepository;
 
-        public override async Task<BaseResponse<DepartmentDto>> InsertAsync(DepartmentDto createCountryResource)
+        public override async Task<BaseResponse<DepartmentDto>> InsertAsync(DepartmentDto createDepartmentResource)
         {
             try
             {
                 // Mapping Resource to Person
-                var department = Mapper.Map<CountryDto, Country>(createDepartmentResource);
+                var department = Mapper.Map<DepartmentDto, Department>(createDepartmentResource);
 
                 await _departmentRepository.InsertAsync(department);
                 await UnitOfWork.CompleteAsync();
@@ -40,26 +40,25 @@ namespace ProteinApi.Service
             }
         }
 
-        public override async Task<BaseResponse<CountryDto>> UpdateAsync(int id, CountryDto request)
+        public override async Task<BaseResponse<DepartmentDto>> UpdateAsync(int id, DepartmentDto request)
         {
             try
             {
                 // Validate Id is existent
-                var country = await _departmentRepository.GetByIdAsync(id);
-                if (country is null)
+                var department = await _departmentRepository.GetByIdAsync(id);
+                if (department is null)
                 {
-                    return new BaseResponse<CountryDto>("Country_Id_NoData");
+                    return new BaseResponse<DepartmentDto>("Department_Id_NoData");
                 }
 
-                country.CountryId = request.CountryId;
-                country.CountryName = request.CountryName;
-                country.Continent = request.Continent;
-                country.Currency = request.Currency;
+                department.DepartmentId = request.DepartmentId;
+                department.DeptName = request.DeptName;
+                department.CountryId = request.CountryId;
 
-                _departmentRepository.Update(country);
+                _departmentRepository.Update(department);
                 await UnitOfWork.CompleteAsync();
 
-                return new BaseResponse<CountryDto>(Mapper.Map<Country, CountryDto>(country));
+                return new BaseResponse<DepartmentDto>(Mapper.Map<Department, DepartmentDto>(department));
             }
             catch (Exception ex)
             {
@@ -67,14 +66,14 @@ namespace ProteinApi.Service
             }
         }
 
-        public override async Task<BaseResponse<CountryDto>> GetByIdAsync(int id)
+        public override async Task<BaseResponse<DepartmentDto>> GetByIdAsync(int id)
         {
-            var person = await _countryRepository.GetByIdAsync(id);
+            var department = await _departmentRepository.GetByIdAsync(id);
 
             // Mapping
-            var personResource = Mapper.Map<Country, CountryDto>(person);
+            var departmentResource = Mapper.Map<Department, DepartmentDto>(department);
 
-            return new BaseResponse<CountryDto>(personResource);
+            return new BaseResponse<DepartmentDto>(departmentResource);
         }
     }
 }

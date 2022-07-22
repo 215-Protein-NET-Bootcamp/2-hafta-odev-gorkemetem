@@ -32,7 +32,7 @@ namespace ProteinApi.Data
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
-                var result = await connection.QueryFirstAsync<Country>(query, new { Id });
+                var result = await connection.QueryFirstAsync<Country>(query, new { entityId });
                 return result;
             }
         }
@@ -41,8 +41,6 @@ namespace ProteinApi.Data
         {
             var query = "INSERT INTO dbo.country (CountryId, CountryName, Continent, Currency) " +
                 "VALUES (@CountryId, @CountryName, @Continent, @Currency)";
-
-            entity.CreatedAt = DateTime.UtcNow;
 
             var parameters = new DynamicParameters();
             parameters.Add("CountryId", entity.CountryId, DbType.String);
@@ -63,7 +61,7 @@ namespace ProteinApi.Data
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
-                await connection.ExecuteAsync(query, new { entity.Id });
+                await connection.ExecuteAsync(query, new { entity.CountryId });
             }
         }
 

@@ -51,7 +51,7 @@ namespace ProteinApi.Controllers
         {
             Log.Information($"{User.Identity?.Name}: create a _departmentService.");
 
-            resource.CreatedBy = User.Identity?.Name;
+            //resource.CreatedBy = User.Identity?.Name;
 
             var insertResult = await _departmentService.InsertAsync(resource);
 

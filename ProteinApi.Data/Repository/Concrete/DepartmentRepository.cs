@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProteinApi.Data.Repository.Concrete
+namespace ProteinApi.Data
 {
     public class DepartmentRepository : IDepartmentRepository
     {
@@ -34,7 +34,7 @@ namespace ProteinApi.Data.Repository.Concrete
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
-                var result = await connection.QueryFirstAsync<Country>(query, new { Id });
+                var result = await connection.QueryFirstAsync<Department>(query, new { entityId });
                 return result;
             }
         }
@@ -43,8 +43,6 @@ namespace ProteinApi.Data.Repository.Concrete
         {
             var query = "INSERT INTO dbo.country (DepartmentId, DeptName, CountryId) " +
                 "VALUES (@DepartmentId, @DeptName, @CountryId)";
-
-            entity.CreatedAt = DateTime.UtcNow;
 
             var parameters = new DynamicParameters();
             parameters.Add("DepartmentId", entity.DepartmentId, DbType.String);
@@ -64,11 +62,21 @@ namespace ProteinApi.Data.Repository.Concrete
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
-                await connection.ExecuteAsync(query, new { entity.Id });
+                await connection.ExecuteAsync(query, new { entity.CountryId });
             }
         }
 
+        public void RemoveAsync(Department entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Country entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Department entity)
         {
             throw new NotImplementedException();
         }
