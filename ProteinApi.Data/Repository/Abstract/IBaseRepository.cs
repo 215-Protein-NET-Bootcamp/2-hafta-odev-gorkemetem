@@ -12,6 +12,5 @@ namespace ProteinApi.Data
         void RemoveAsync(Entity entity);
         void Update(Entity entity);
         Task<IEnumerable<Entity>> GetAllAsync();
-        Task<IEnumerable<Entity>> FindAsync(Expression<Func<Entity, bool>> expression);
     }
 }

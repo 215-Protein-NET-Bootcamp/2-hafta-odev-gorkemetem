@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProteinApi.Data
 {
-    public class Employee
+    public interface IDepartmentRepository : IBaseRepository<Department>
     {
-        public int EmpId { get; set; }
-        public string EmpName { get; set; }
-        public int DeptId { get; set; }
 
     }
 }

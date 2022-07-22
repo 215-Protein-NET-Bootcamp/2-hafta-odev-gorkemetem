@@ -10,8 +10,10 @@ namespace ProteinApi.Data
 
         }
 
-        public DbSet<Person> Person { get; set; }
-        public DbSet<Author> Author { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Folder> Folder { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

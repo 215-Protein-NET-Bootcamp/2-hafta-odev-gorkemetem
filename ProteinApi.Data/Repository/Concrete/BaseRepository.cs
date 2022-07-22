@@ -18,11 +18,6 @@ namespace ProteinApi.Data
             this.entities = Context.Set<Entity>();
         }
 
-        public async Task<IEnumerable<Entity>> FindAsync(Expression<Func<Entity, bool>> expression)
-        {
-            return await entities.Where(expression).ToListAsync();
-        }
-
         public async Task<IEnumerable<Entity>> GetAllAsync()
         {
             return await entities.AsNoTracking().ToListAsync();
