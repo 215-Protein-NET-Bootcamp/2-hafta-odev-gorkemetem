@@ -12,31 +12,9 @@ namespace ProteinApi.Controllers
     [ApiController]
     public class CountryController : BaseController<CountryDto, Country>
     {
-        private readonly ICountryService _countryService;
-
-        public CountryController(ICountryService CountryService, IMapper mapper) : base(CountryService, mapper)
+        public CountryController(IBaseService<CountryDto, Country> baseService, IMapper mapper) : base(baseService, mapper)
         {
-            _countryService = CountryService;
         }
-
-
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            Log.Information($"{User.Identity?.Name}: get Country.");
-
-            var result = await _countryService.GetAllAsync();
-
-            if (!result.Success)
-                return BadRequest(result);
-
-            if (result.Response is null)
-                return NoContent();
-
-            return Ok(result);
-        }
-
 
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
@@ -51,14 +29,7 @@ namespace ProteinApi.Controllers
         {
             Log.Information($"{User.Identity?.Name}: create a Author.");
 
-            //resource.CreatedBy = User.Identity?.Name;
-
-            var insertResult = await _countryService.InsertAsync(resource);
-
-            if (!insertResult.Success)
-                return BadRequest(insertResult);
-
-            return StatusCode(201, insertResult);
+            return await base.CreateAsync(resource);    
         }
 
         [HttpPut("{id:int}")]

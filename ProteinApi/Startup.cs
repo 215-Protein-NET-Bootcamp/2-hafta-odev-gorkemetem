@@ -65,7 +65,7 @@ namespace ProteinApi
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IFolderRepository, FolderRepository>();
-            //services.AddScoped<IFolderService, FolderService>();
+            services.AddScoped<IFolderService, FolderService>();
 
 
 

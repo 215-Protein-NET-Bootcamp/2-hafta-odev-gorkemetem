@@ -12,31 +12,11 @@ namespace ProteinApi.Controllers
     [ApiController]
     public class EmployeeController : BaseController<EmployeeDto, Employee>
     {
-        private readonly IEmployeeService _employeeService;
 
         public EmployeeController(IEmployeeService EmployeeService, IMapper mapper) : base(EmployeeService, mapper)
         {
-            _employeeService = EmployeeService;
+            
         }
-
-
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            Log.Information($"{User.Identity?.Name}: get Country.");
-
-            var result = await _employeeService.GetAllAsync();
-
-            if (!result.Success)
-                return BadRequest(result);
-
-            if (result.Response is null)
-                return NoContent();
-
-            return Ok(result);
-        }
-
 
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
@@ -53,12 +33,7 @@ namespace ProteinApi.Controllers
 
             //resource.CreatedBy = User.Identity?.Name;
 
-            var insertResult = await _employeeService.InsertAsync(resource);
-
-            if (!insertResult.Success)
-                return BadRequest(insertResult);
-
-            return StatusCode(201, insertResult);
+            return await base.CreateAsync(resource);
         }
 
         [HttpPut("{id:int}")]

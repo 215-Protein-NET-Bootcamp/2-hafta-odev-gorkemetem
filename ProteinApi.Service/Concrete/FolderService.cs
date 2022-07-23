@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProteinApi.Service
 {
-    public class FolderService : BaseService<FolderDto, Folder>
+    public class FolderService : BaseService<FolderDto, Folder>, IFolderService
     {
         public FolderService(IFolderRepository folderRepository, IMapper mapper, IUnitOfWork unitOfWork) : base(folderRepository, mapper, unitOfWork)
         {
@@ -36,7 +36,7 @@ namespace ProteinApi.Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Person_Saving_Error", ex);
+                throw new MessageResultException("Folder_Saving_Error", ex);
             }
         }
 
@@ -62,7 +62,7 @@ namespace ProteinApi.Service
             }
             catch (Exception ex)
             {
-                throw new MessageResultException("Country_Saving_Error", ex);
+                throw new MessageResultException("Folder_Saving_Error", ex);
             }
         }
 

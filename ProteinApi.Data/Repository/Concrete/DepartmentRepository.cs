@@ -56,7 +56,7 @@ namespace ProteinApi.Data
             }
         }
 
-        public async void RemoveAsync(Country entity)
+        public async void RemoveAsync(Department entity)
         {
             var query = "DELETE FROM dbo.country WHERE Id = @Id";
             using (var connection = _dbContext.CreateConnection())
@@ -64,16 +64,6 @@ namespace ProteinApi.Data
                 connection.Open();
                 await connection.ExecuteAsync(query, new { entity.CountryId });
             }
-        }
-
-        public void RemoveAsync(Department entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Country entity)
-        {
-            throw new NotImplementedException();
         }
 
         public void Update(Department entity)

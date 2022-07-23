@@ -12,31 +12,11 @@ namespace ProteinApi.Controllers
     [ApiController]
     public class FolderController : BaseController<FolderDto, Folder>
     {
-        private readonly IFolderService _folderService;
 
         public FolderController(IFolderService FolderService, IMapper mapper) : base(FolderService, mapper)
         {
-            _folderService = FolderService;
+            
         }
-
-
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            Log.Information($"{User.Identity?.Name}: get Country.");
-
-            var result = await _folderService.GetAllAsync();
-
-            if (!result.Success)
-                return BadRequest(result);
-
-            if (result.Response is null)
-                return NoContent();
-
-            return Ok(result);
-        }
-
 
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
@@ -51,14 +31,7 @@ namespace ProteinApi.Controllers
         {
             Log.Information($"{User.Identity?.Name}: create a Folder.");
 
-            //resource.CreatedBy = User.Identity?.Name;
-
-            var insertResult = await _folderService.InsertAsync(resource);
-
-            if (!insertResult.Success)
-                return BadRequest(insertResult);
-
-            return StatusCode(201, insertResult);
+            return await base.CreateAsync(resource);
         }
 
         [HttpPut("{id:int}")]

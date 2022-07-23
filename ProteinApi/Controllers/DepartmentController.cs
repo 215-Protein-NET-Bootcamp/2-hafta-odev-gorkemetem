@@ -12,36 +12,15 @@ namespace ProteinApi.Controllers
     [ApiController]
     public class DepartmentController : BaseController<DepartmentDto, Department>
     {
-        private readonly IDepartmentService _departmentService;
-
         public DepartmentController(IDepartmentService DepartmentService, IMapper mapper) : base(DepartmentService, mapper)
         {
-            _departmentService = DepartmentService;
+            
         }
-
-
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            Log.Information($"{User.Identity?.Name}: get Country.");
-
-            var result = await _departmentService.GetAllAsync();
-
-            if (!result.Success)
-                return BadRequest(result);
-
-            if (result.Response is null)
-                return NoContent();
-
-            return Ok(result);
-        }
-
 
         [HttpGet("{id:int}")]
         public new async Task<IActionResult> GetByIdAsync(int id)
         {
-            Log.Information($"{User.Identity?.Name}: get a Country with Id is {id}.");
+            Log.Information($"{User.Identity?.Name}: get a Department with Id is {id}.");
 
             return await base.GetByIdAsync(id);
         }
@@ -49,16 +28,11 @@ namespace ProteinApi.Controllers
         [HttpPost]
         public new async Task<IActionResult> CreateAsync([FromBody] DepartmentDto resource)
         {
-            Log.Information($"{User.Identity?.Name}: create a _departmentService.");
+            Log.Information($"{User.Identity?.Name}: create a Department.");
 
             //resource.CreatedBy = User.Identity?.Name;
 
-            var insertResult = await _departmentService.InsertAsync(resource);
-
-            if (!insertResult.Success)
-                return BadRequest(insertResult);
-
-            return StatusCode(201, insertResult);
+            return await base.CreateAsync(resource);
         }
 
         [HttpPut("{id:int}")]
