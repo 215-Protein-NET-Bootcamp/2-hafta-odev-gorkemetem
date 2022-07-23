@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProteinApi.Service
 {
+
+    /*
+     * The class contains the basic crud operations that prepare the data for the data layer.
+     */
     public abstract class BaseService<Dto, Entity> : IBaseService<Dto, Entity> where Entity : class
     {
 
@@ -25,9 +29,8 @@ namespace ProteinApi.Service
 
         public virtual async Task<BaseResponse<IEnumerable<Dto>>> GetAllAsync()
         {
-            // Get list record from DB
+            
             var tempEntity = await baseRepository.GetAllAsync();
-            // Mapping Entity to Resource
             var result = Mapper.Map<IEnumerable<Entity>, IEnumerable<Dto>>(tempEntity);
 
             return new BaseResponse<IEnumerable<Dto>>(result);
@@ -36,7 +39,6 @@ namespace ProteinApi.Service
         public virtual async Task<BaseResponse<Dto>> GetByIdAsync(int id)
         {
             var tempEntity = await baseRepository.GetByIdAsync(id);
-            // Mapping Entity to Resource
             var result = Mapper.Map<Entity, Dto>(tempEntity);
 
             return new BaseResponse<Dto>(result);
@@ -46,7 +48,6 @@ namespace ProteinApi.Service
         {
             try
             {
-                // Mapping Resource to Entity
                 var tempEntity = Mapper.Map<Dto, Entity>(insertResource);             
 
                 await baseRepository.InsertAsync(tempEntity);
@@ -64,7 +65,6 @@ namespace ProteinApi.Service
         {
             try
             {
-                // Validate Id is existent
                 var tempEntity = await baseRepository.GetByIdAsync(id);
                 if (tempEntity is null)
                     return new BaseResponse<Dto>("Id_NoData");
@@ -84,15 +84,12 @@ namespace ProteinApi.Service
         {
             try
             {
-                // Validate Id is existent
                 var tempEntity = await baseRepository.GetByIdAsync(id);
                 if (tempEntity is null)
                     return new BaseResponse<Dto>("NoData");
-                // Update infomation
                 Mapper.Map(updateResource, tempEntity);
 
                 await UnitOfWork.CompleteAsync();
-                // Mapping
                 var resource = Mapper.Map<Entity, Dto>(tempEntity);
 
                 return new BaseResponse<Dto>(resource);

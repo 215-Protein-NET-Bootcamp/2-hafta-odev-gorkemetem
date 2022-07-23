@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 
 namespace ProteinApi
 {
+
+    /*
+     * Base controller class with crud operations
+     */
     [ApiController]
     public class BaseController<Dto, Entity> : ControllerBase
     {

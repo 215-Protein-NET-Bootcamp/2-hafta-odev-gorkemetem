@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ProteinApi.Data
 {
+    /*
+     * Repository class with database connection and crud operations
+     */
     public class BaseRepository<Entity> : IBaseRepository<Entity> where Entity : class
     {
         protected readonly AppDbContext Context;
@@ -25,7 +28,6 @@ namespace ProteinApi.Data
 
         public virtual async Task<Entity> GetByIdAsync(int entityId)
         {
-            //return await entities.FindAsync(entityId);
             return await entities.Where(entity => EF.Property<int>(entity, "Id").Equals(entityId)).SingleOrDefaultAsync();
         }
 
@@ -36,8 +38,7 @@ namespace ProteinApi.Data
 
         public void RemoveAsync(Entity entity)
         {
-            //entities.Remove(entity);
-            entity.GetType().GetProperty("IsDeleted").SetValue(entity, true);
+            entities.Remove(entity);
         }
 
         public void Update(Entity entity)
