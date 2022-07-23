@@ -13,7 +13,7 @@ namespace ProteinApi.Data
         public DapperDbContext(IConfiguration configuration)
         {
             this.configuration = configuration;
-            databaseType = "SQL";
+            databaseType = configuration.GetConnectionString("DbType");
             connectionString = GetConnectionString();
         }
         private string GetConnectionString()

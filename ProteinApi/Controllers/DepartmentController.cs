@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProteinApi.Controllers
 {
-    [Route("api/v1/tech/[controller]")]
+    [Route("api/v1/protein/[controller]")]
     [ApiController]
     public class DepartmentController : BaseController<DepartmentDto, Department>
     {
