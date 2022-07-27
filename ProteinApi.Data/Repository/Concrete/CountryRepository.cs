@@ -28,7 +28,7 @@ namespace ProteinApi.Data
 
         public async Task<Country> GetByIdAsync(int entityId)
         {
-            var query = "SELECT * FROM dbo.country WHERE Id = @Id";
+            var query = "SELECT * FROM dbo.country WHERE id = @Id";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
@@ -39,14 +39,14 @@ namespace ProteinApi.Data
 
         public async Task InsertAsync(Country entity)
         {
-            var query = "INSERT INTO dbo.country (CountryId, CountryName, Continent, Currency) " +
+            var query = "INSERT INTO dbo.country (countryid, countryname, continent, currency) " +
                 "VALUES (@CountryId, @CountryName, @Continent, @Currency)";
 
             var parameters = new DynamicParameters();
-            parameters.Add("CountryId", entity.CountryId, DbType.String);
-            parameters.Add("CountryName", entity.CountryName, DbType.String);
-            parameters.Add("Continent", entity.Continent, DbType.String);
-            parameters.Add("Currency", entity.Currency, DbType.String);
+            parameters.Add("countryid", entity.CountryId, DbType.Int64);
+            parameters.Add("countryname", entity.CountryName, DbType.String);
+            parameters.Add("continent", entity.Continent, DbType.String);
+            parameters.Add("currency", entity.Currency, DbType.String);
 
             using (var connection = _dbContext.CreateConnection())
             {
@@ -57,7 +57,7 @@ namespace ProteinApi.Data
 
         public async void RemoveAsync(Country entity)
         {
-            var query = "DELETE FROM dbo.country WHERE Id = @Id";
+            var query = "DELETE FROM dbo.country WHERE id = @Id";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();

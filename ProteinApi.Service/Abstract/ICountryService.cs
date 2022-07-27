@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProteinApi.Service
 {
-    public interface ICountryService :IBaseService<CountryDto, Country>
+    public interface ICountryService : IBaseService<CountryDto, Country>
     {
     }
 }

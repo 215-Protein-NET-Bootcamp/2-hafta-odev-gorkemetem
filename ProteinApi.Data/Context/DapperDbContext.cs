@@ -23,7 +23,7 @@ namespace ProteinApi.Data
                 case "SQL":
                     return this.configuration.GetConnectionString("DefaultConnection");
                 case "Postgre":
-                    return this.configuration.GetConnectionString("PosgreSqlConnection");
+                    return this.configuration.GetConnectionString("PostgreSqlConnection");
                 default:
                     return this.configuration.GetConnectionString("DefaultConnection");
             }

@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProteinApi.Data
@@ -30,7 +28,7 @@ namespace ProteinApi.Data
 
         public async Task<Department> GetByIdAsync(int entityId)
         {
-            var query = "SELECT * FROM dbo.country WHERE Id = @Id";
+            var query = "SELECT * FROM dbo.country WHERE id = @Id";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
@@ -45,9 +43,9 @@ namespace ProteinApi.Data
                 "VALUES (@DepartmentId, @DeptName, @CountryId)";
 
             var parameters = new DynamicParameters();
-            parameters.Add("DepartmentId", entity.DepartmentId, DbType.String);
-            parameters.Add("DeptName", entity.DeptName, DbType.String);
-            parameters.Add("CountryId", entity.CountryId, DbType.String);
+            parameters.Add("departmentid", entity.DepartmentId, DbType.Int64);
+            parameters.Add("deptname", entity.DeptName, DbType.String);
+            parameters.Add("countryid", entity.CountryId, DbType.Int64);
 
             using (var connection = _dbContext.CreateConnection())
             {
@@ -58,7 +56,7 @@ namespace ProteinApi.Data
 
         public async void RemoveAsync(Department entity)
         {
-            var query = "DELETE FROM dbo.country WHERE Id = @Id";
+            var query = "DELETE FROM dbo.country WHERE id = @Id";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();

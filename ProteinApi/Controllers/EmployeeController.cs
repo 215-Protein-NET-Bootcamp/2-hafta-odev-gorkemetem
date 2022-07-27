@@ -31,8 +31,6 @@ namespace ProteinApi.Controllers
         {
             Log.Information($"{User.Identity?.Name}: create a Employee.");
 
-            //resource.CreatedBy = User.Identity?.Name;
-
             return await base.CreateAsync(resource);
         }
 
