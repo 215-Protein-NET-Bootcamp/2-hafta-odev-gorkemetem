@@ -28,7 +28,7 @@ namespace ProteinApi.Data
 
         public async Task<Country> GetByIdAsync(int entityId)
         {
-            var query = "SELECT * FROM dbo.country WHERE id = @Id";
+            var query = "SELECT * FROM dbo.country WHERE id = @entityId";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
@@ -57,7 +57,7 @@ namespace ProteinApi.Data
 
         public async void RemoveAsync(Country entity)
         {
-            var query = "DELETE FROM dbo.country WHERE id = @Id";
+            var query = "DELETE FROM dbo.country WHERE Id = @Id";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
