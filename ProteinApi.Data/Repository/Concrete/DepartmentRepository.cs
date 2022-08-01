@@ -17,7 +17,7 @@ namespace ProteinApi.Data
 
         public async Task<IEnumerable<Department>> GetAllAsync()
         {
-            var sql = "SELECT * FROM dbo.country";
+            var sql = "SELECT * FROM dbo.department";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
@@ -28,7 +28,7 @@ namespace ProteinApi.Data
 
         public async Task<Department> GetByIdAsync(int entityId)
         {
-            var query = "SELECT * FROM dbo.country WHERE id = @Id";
+            var query = "SELECT * FROM dbo.department WHERE departmentid = @entityId";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
@@ -39,7 +39,7 @@ namespace ProteinApi.Data
 
         public async Task InsertAsync(Department entity)
         {
-            var query = "INSERT INTO dbo.country (DepartmentId, DeptName, CountryId) " +
+            var query = "INSERT INTO dbo.department (DepartmentId, DeptName, CountryId) " +
                 "VALUES (@DepartmentId, @DeptName, @CountryId)";
 
             var parameters = new DynamicParameters();
@@ -56,11 +56,11 @@ namespace ProteinApi.Data
 
         public async void RemoveAsync(Department entity)
         {
-            var query = "DELETE FROM dbo.country WHERE id = @Id";
+            var query = "DELETE FROM dbo.department WHERE departmentid = @DepartmentId";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
-                await connection.ExecuteAsync(query, new { entity.CountryId });
+                await connection.ExecuteAsync(query, new { entity.DepartmentId });
             }
         }
 
