@@ -4,13 +4,17 @@ PostgreSql bağlantısında hatalar aldığım için database'i sql server'da ol
 Bazı fonksiyonlarda hata almaktayım.
 
 ## Ekran Görüntüleri
-#Country table
+Country table
 ![swagger](ScreenShots/CountryGetById.PNG)
 ![swagger](ScreenShots/CountryDelete.PNG)
 ![swagger](ScreenShots/CountryGetAll.PNG)
 
-#Employee table
+Employee table
 ![swagger](ScreenShots/EmployeeGetById.PNG)
 ![swagger](ScreenShots/EmployeeDelete.PNG)
 ![swagger](ScreenShots/EmployeeGetAll.PNG)
+
+Database
+![swagger](ScreenShots/Database.PNG)
+
 
