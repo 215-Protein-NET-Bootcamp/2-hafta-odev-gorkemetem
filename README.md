@@ -14,7 +14,7 @@ Employee table
 ![swagger](ScreenShots/EmployeeDelete.PNG)
 ![swagger](ScreenShots/EmployeeGetAll.PNG)
 
-Database
+                          Database
 ![swagger](ScreenShots/database.PNG)
 
 
