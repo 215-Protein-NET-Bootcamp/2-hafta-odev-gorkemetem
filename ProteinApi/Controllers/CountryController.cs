@@ -12,7 +12,7 @@ namespace ProteinApi.Controllers
     [ApiController]
     public class CountryController : BaseController<CountryDto, Country>
     {
-        public CountryController(IBaseService<CountryDto, Country> baseService, IMapper mapper) : base(baseService, mapper)
+        public CountryController(ICountryService CountryService, IMapper mapper) : base(CountryService, mapper)
         {
         }
 

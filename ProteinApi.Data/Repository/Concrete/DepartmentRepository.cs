@@ -28,7 +28,7 @@ namespace ProteinApi.Data
 
         public async Task<Department> GetByIdAsync(int entityId)
         {
-            var query = "SELECT * FROM dbo.department WHERE departmentid = @entityId";
+            var query = "SELECT * FROM dbo.department WHERE DepartmentId = @entityId";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();
@@ -56,7 +56,7 @@ namespace ProteinApi.Data
 
         public async void RemoveAsync(Department entity)
         {
-            var query = "DELETE FROM dbo.department WHERE departmentid = @DepartmentId";
+            var query = "DELETE FROM dbo.department WHERE DepartmentId = @DepartmentId";
             using (var connection = _dbContext.CreateConnection())
             {
                 connection.Open();

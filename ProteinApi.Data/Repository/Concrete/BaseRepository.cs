@@ -26,7 +26,7 @@ namespace ProteinApi.Data
 
         public virtual async Task<Entity> GetByIdAsync(int entityId)
         {
-            return await entities.Where(entity => EF.Property<int>(entity, "empid").Equals(entityId)).SingleOrDefaultAsync();
+            return await entities.Where(entity => EF.Property<int>(entity, "id").Equals(entityId)).SingleOrDefaultAsync();
         }
 
         public async Task InsertAsync(Entity entity)

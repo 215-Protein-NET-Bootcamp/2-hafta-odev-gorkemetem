@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using ProteinApi.Base;
 using ProteinApi.Data;
 using ProteinApi.Dto;
+using System.Threading.Tasks;
 
 namespace ProteinApi.Service
 {
@@ -11,6 +13,6 @@ namespace ProteinApi.Service
             
         }
 
-
+  
     }
 }

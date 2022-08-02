@@ -1,7 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -60,19 +59,12 @@ namespace ProteinApi
             });
             services.AddSingleton(mapperConfig.CreateMapper());
 
-
-            // services
-            services.AddSingleton<SingletonService>();
-            services.AddScoped<ScopedService>();
-            services.AddTransient<TransientService>();
-
             // add services
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IFolderRepository, FolderRepository>();
             services.AddScoped<IFolderService, FolderService>();
             
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -107,39 +99,6 @@ namespace ProteinApi
             {
                 endpoints.MapControllers();
             });
-
-
-            // services for Transient - Singleton - Scoped
-            app.Use((ctx, next) =>
-            {
-                // Get all the services and increase their counters...
-                var singleton = ctx.RequestServices.GetRequiredService<SingletonService>();
-                var scoped = ctx.RequestServices.GetRequiredService<ScopedService>();
-                var transient = ctx.RequestServices.GetRequiredService<TransientService>();
-
-                singleton.Counter++;
-                scoped.Counter++;
-                transient.Counter++;
-
-                return next();
-            });
-            app.Run(async ctx =>
-            {
-                // ...then do it again...
-                var singleton = ctx.RequestServices.GetRequiredService<SingletonService>();
-                var scoped = ctx.RequestServices.GetRequiredService<ScopedService>();
-                var transient = ctx.RequestServices.GetRequiredService<TransientService>();
-
-                singleton.Counter++;
-                scoped.Counter++;
-                transient.Counter++;
-
-                // ...and display the counter values.
-                await ctx.Response.WriteAsync($"Singleton: {singleton.Counter}\n");
-                await ctx.Response.WriteAsync($"Scoped: {scoped.Counter}\n");
-                await ctx.Response.WriteAsync($"Transient: {transient.Counter}\n");
-            });
-
         }
     }
 }
