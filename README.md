@@ -15,6 +15,6 @@ Employee table
 ![swagger](ScreenShots/EmployeeGetAll.PNG)
 
 Database
-![swagger](ScreenShots/Database.PNG)
+![swagger](ScreenShots/database.PNG)
 
 
