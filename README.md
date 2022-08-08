@@ -3,7 +3,7 @@
 ![swagger](ScreenShots/Homework.PNG)
 
 PostgreSql bağlantısında hatalar aldığım için database'i sql server'da oluşturdum. 
-4 tablo içinde istenilen controller'lar ve repository'ler oluşturuldu. Bazı fonksiyonlarda hata almaktayım.
+4 tablo için de istenilenlere uygun şekilde controller'lar ve repository'ler oluşturuldu. Bazı fonksiyonlarda hata almaktayım.
 
 ## Ekran Görüntüleri
     Country table:
