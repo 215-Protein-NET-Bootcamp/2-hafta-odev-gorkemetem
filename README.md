@@ -1,6 +1,6 @@
 # 2-hafta-odev-gorkemetem
 
-![swagger](ScreenShots/CountryGetById.PNG)
+![swagger](ScreenShots/Homework.PNG)
 
 PostgreSql bağlantısında hatalar aldığım için database'i sql server'da oluşturdum.
 Bazı fonksiyonlarda hata almaktayım.
