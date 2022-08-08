@@ -5,8 +5,6 @@
 PostgreSql bağlantısında hatalar aldığım için database'i sql server'da oluşturdum.
 Bazı fonksiyonlarda hata almaktayım.
 
-![swagger](ScreenShots/CountryGetById.PNG)
-
 ## Ekran Görüntüleri
     Country table:
 ![swagger](ScreenShots/CountryGetById.PNG)
